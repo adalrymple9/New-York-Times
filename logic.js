@@ -15,7 +15,7 @@ var queryURLBase = "http://api.nytimes.com/svc/search/v2/articlesearch.json?api-
 // =========================================
 
 // start validation function
-function validation (){
+function validation() {
 
 }
 
@@ -100,7 +100,7 @@ $("#search-btn").on("click", function(event) {
 
     //call validation function
     var validationResults = validation(numResults)
-    // write pass and fail objects
+        // write pass and fail objects
 
     if (parseInt(startYear)) {
 
@@ -109,6 +109,12 @@ $("#search-btn").on("click", function(event) {
 
         // Add the date information to the URL
         newURL = newURL + "&begin_date=" + startYear;
+
+
+    } else{
+        alert("Must be Valid Number");
+        $("#start-year").val("")
+        return
     }
 
     if (parseInt(endYear)) {
@@ -118,10 +124,20 @@ $("#search-btn").on("click", function(event) {
 
         // Add the date information to the URL
         newURL = newURL + "&end_date=" + endYear;
+    } else {
+        alert("Must be Valid Number");
+        $("#end-year").val("")
+        return
     }
 
     // Send the AJAX Call the newly assembled URL
-    runQuery(numResults, newURL);
+    if (startYear < endYear) {
+        runQuery(numResults, newURL);
+    } else {
+        alert("invalid search")
+        window.location.reload();
+
+    }
 
 });
 
