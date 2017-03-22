@@ -14,6 +14,11 @@ var queryURLBase = "http://api.nytimes.com/svc/search/v2/articlesearch.json?api-
 // FUNCTIONS
 // =========================================
 
+// start validation function
+function validation (){
+
+}
+
 function runQuery(numArticles, queryURL) {
 
     // AJAX Function
@@ -92,6 +97,10 @@ $("#search-btn").on("click", function(event) {
     // Get the Start Year and End Year
     startYear = $("#start-year").val().trim();
     endYear = $("#end-year").val().trim();
+
+    //call validation function
+    var validationResults = validation(numResults)
+    // write pass and fail objects
 
     if (parseInt(startYear)) {
 
